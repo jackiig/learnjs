@@ -19,10 +19,17 @@ learnjs.appOnReady = function() {
   learnjs.showView(window.location.hash);
 };
 
+learnjs.applyObject = function(obj, elem) {
+  for (var key in obj) {
+    elem.find('[data-name="' + key + '"]').text(obj[key]);
+  }
+};
+
 learnjs.problemView = function(problemNumber) {
   var title = 'Problem #' + problemNumber + ' Coming soon!';
   var view = $('.templates .problem-view').clone();
   view.find('.title').text(title);
+  learnjs.applyObject(learnjs.problems[problemNumber - 1], view);
   return view;
 };
 
