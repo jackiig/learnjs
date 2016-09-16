@@ -1,6 +1,17 @@
 'use strict';
 var learnjs = {};
 
+learnjs.problems = [
+  {
+    description: 'What is truth?',
+    code: 'function problem() { return __; }'
+  },
+  {
+    description: 'Simple Math',
+    code: 'function problem() { return 42 === 6 * __; }'
+  },
+];
+
 learnjs.appOnReady = function() {
   window.onhashchange = function() {
     learnjs.showView(window.location.hash);
@@ -10,7 +21,9 @@ learnjs.appOnReady = function() {
 
 learnjs.problemView = function(problemNumber) {
   var title = 'Problem #' + problemNumber + ' Coming soon!';
-  return $('<div class="problem-view">').text(title);
+  var view = $('.templates .problem-view').clone();
+  view.find('.title').text(title);
+  return view;
 };
 
 learnjs.showView = function(hash) {
