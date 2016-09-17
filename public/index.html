@@ -10,13 +10,48 @@
     <script src="/vendor.js"></script>
     <script src="/app.js"></script>
     <style type="text/css" media="all">
-      body { margin-top: 30px; }
+      body { margin-top: 80px; }
       .templates { display: none; }
+      .inline-list { margin-top: 3px; margin-bottom: 3px; }
+      .inline-list li {
+        display: inline;
+        margin: 0 20px 0 0;
+      }
+      .fixed-top {
+        position: fixed;
+        top: 0px;
+        z-index: 1024;
+      }
+      .no-select {
+        user-select: none;
+        -webkit-user-select: none;
+        -ms-user-select: none;
+        -moz-user-select: none;
+      }
+      .hover-links a { text-decoration: none; }
+      .hover-links a:hover { text-decoration: underline; }
+      .nav-container {
+        background: #666;
+      }
+      .nav-container a { color: white; }
+      .text-lg {
+        font-size: 3rem;
+      }
     </style>
   </head>
   <body>
     <div class="markup">
+      <div class="nav-container no-select fixed-top u-full-width">
+        <div class="container">
+          <ul class="inline-list hover-links nav-list six columns">
+            <li><a class="text-lg" href="#">LearnJS</a></li>
+            <li><a href="#problem-1">Start</a></li>
+          </ul>
+        </div>
+      </div>
       <div class="container view-container">
+      </div>
+      <div class="templates">
         <div class="landing-view">
           <div class="row">
             <div class="one-half column">
@@ -28,13 +63,27 @@
             </div>
           </div>
         </div>
-      </div>
-      <div class="templates">
         <div class="problem-view">
           <h3 class="title">Problem #</h3>
           <p data-name="description"></p>
           <pre><code data-name="code"></code></pre>
+          <form class="" action="index.html" method="post">
+            <textarea class="u-full-width answer"></textarea>
+            <div class="">
+              <button type="button" class="button-primary check-btn">
+                Check Answer
+              </button>
+              <p class="result"></p>
+            </div>
+          </form>
         </div>
+        <div class="correct-flash">
+          <span>Correct!</span>
+          <a>Next Problem</a>
+        </div>
+        <li class="skip-btn">
+          <a>Skip This Problem</a>
+        </li>
       </div>
     </div>
     <script type="text/javascript">
